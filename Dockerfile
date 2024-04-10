@@ -4,6 +4,6 @@ WORKDIR /app
 COPY . ./
 RUN npm install && npm run build
 
-FROM nginx:alpine
+EXPOSE 80
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+CMD npm run preview -- --host 0.0.0.0 --port 80
